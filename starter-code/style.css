@@ -22,6 +22,18 @@ body {
 	margin: 8%;
 }
 
+.flippedCardKing {
+	background-image: url("king.png");
+}
+
+.flippedCardQueen {
+	background-image: url("queen.png");
+}
+
+.card:click {
+	
+}
+
 h1 {
 	color: rgb(2, 132, 130);
 }
