@@ -33,7 +33,6 @@ var createCards = function() {
 
 		newCard.setAttribute('data-card', cards[x]);
 		newCard.addEventListener('click', isTwoCards);
-		newCard.addEventListener('click', flipCard);
 	}	
 
 }
@@ -48,34 +47,39 @@ function isTwoCards() {
   // for now, just know it gives you access to the card the user clicked on
   cardsInPlay.push(this.getAttribute('data-card'));
 
+
+	if (this.getAttribute('data-card') === "king") {
+			this.innerHTML = "<img src='king.png' alt='King of Spades'>";
+		} else {
+			this.innerHTML = "<img src='queen.png' alt='Queen of Spades'>";
+		}
+
   // if you have two cards in play check for a match
   if (cardsInPlay.length === 2) {
-
     // pass the cardsInPlay as an argument to isMatch function
     isMatch(cardsInPlay);
-
     // clear cards in play array for next try
     cardsInPlay = [];
+
+
 
   }
 
 }
 
-var isMatch = function (a) {
-	if (a[0]['data-card'] === a[1]['data-card']) {
+var isMatch = function (cards) {
+	if (cards[0] === cards[1]) {
 		alert("you matched two cards!");
 	} else {
 		alert("sorry.. try again!");
 	}
-}
 
-var flipCard = function(newCard) {
-	if (newCard.getAttribute('data-card') === "king") {
-		newCard.innerHTML = '<img src="king.png" alt="King of Spades">'
-	} else {
-		newCard.innerHTML = '<img src="queen.png" alt="Queen of Spades" />'
+	//code to clear cards...
+	for (i = 0; i < 2; i++){
+		cardsInPlay[i].innerHTML ='';
 	}
 }
+
 
 
 
